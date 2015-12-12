@@ -21,10 +21,18 @@ PRODUCT_PACKAGES := \
 
 PRODUCT_COPY_FILES := \
     device/asus/tilapia/fstab.grouper:root/fstab.grouper \
-    device/asus/tilapia/init.tilapia.rc:root/init.grouper.rc
+    device/asus/tilapia/init.tilapia.rc:root/init.grouper.rc \
+    device/asus/tilapia/familinklogo.rle:root/initlogo.rle \
+    device/asus/tilapia/init.framapia.sh:system/etc/init.framapia.sh \
+    device/asus/tilapia/bootanimation.zip:system/media/bootanimation.zip \
+    device/asus/tilapia/apns-conf.xml:system/etc/apns-conf.xml \
+    device/asus/tilapia/hosts:system/etc/hosts
 
 DEVICE_PACKAGE_OVERLAYS := \
     device/asus/tilapia/overlay
+
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.com.android.dataroaming=true
 
 # the actual meat of the device-specific product definition
 $(call inherit-product, device/asus/grouper/device-common.mk)

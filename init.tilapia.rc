@@ -40,7 +40,7 @@ on post-fs-data
 
     # change back to bluetooth from system
     chown bluetooth net_bt_stack /data/misc/bluetooth
-    
+
     mkdir /data/radio 0775 radio radio
     mkdir /data/radio/log 0775 radio radio
 
@@ -300,6 +300,9 @@ on boot
     chown system system /proc/ektf_dbg
     start touch_fw_update
 
+# Ajout ALG
+    start frame-setup
+
 # the following settings are used to disable ipv6 on cellular networks that cannot
 # support it.
 
@@ -427,7 +430,7 @@ on property:sys.shutdown.requested=1recovery
 service tf_daemon /system/bin/tf_daemon -storageDir /data/tf -d
     class main
     user root
-    group shell	
+    group shell
 
 # may restart due to /data/tf not existing yet
 on property:init.svc.tf_daemon=restarting
@@ -452,4 +455,12 @@ service touch_fw_update /system/bin/sh -c "echo /system/etc/firmware/touch_fw.ek
     user root
     group root
     oneshot
+
+
+# Ajout ALG - script iptables
+service frame-setup /system/etc/init.framapia.sh
+    user root
+    group root
+    oneshot
+
 
