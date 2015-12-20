@@ -15,6 +15,11 @@ iptables -I INPUT -i rmnet1 -s 62.210.106.89 -j ACCEPT
 # le port 11111 est le port pour le server UDP
 iptables -I INPUT -p udp --dport 11111 -j ACCEPT
 
+# le port 6000 est le port pour le server TCP
+iptables -I INPUT -p tcp --dport 6000 -j ACCEPT
+iptables -I OUTPUT -state ESTABLISHED,RELATED -o rmnet0 -j ACCEPT 
+iptables -I OUTPUT -state ESTABLISHED,RELATED -o rmnet1 -j ACCEPT 
+
 # Enable roaming
 settings put global data_roaming 1
 
