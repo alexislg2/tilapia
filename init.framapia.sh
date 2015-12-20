@@ -17,8 +17,8 @@ iptables -I INPUT -p udp --dport 11111 -j ACCEPT
 
 # le port 6000 est le port pour le server TCP
 iptables -I INPUT -p tcp --dport 6000 -j ACCEPT
-iptables -I OUTPUT -state ESTABLISHED,RELATED -o rmnet0 -j ACCEPT 
-iptables -I OUTPUT -state ESTABLISHED,RELATED -o rmnet1 -j ACCEPT 
+iptables -I OUTPUT -m state --state ESTABLISHED,RELATED  -o rmnet0 -j ACCEPT
+iptables -I OUTPUT -m state --state ESTABLISHED,RELATED  -o rmnet1 -j ACCEPT
 
 # Enable roaming
 settings put global data_roaming 1
