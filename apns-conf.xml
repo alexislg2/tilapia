@@ -4554,10 +4554,10 @@
       type="mms"
   />
 
-  <apn carrier="JT M2M"
+  <apn carrier="JT public fixed"
       mcc="234"
       mnc="50"
-      apn="jtm2m"
-      type="default"
+      apn="jtfixedpublic"
+      type="default,supl"
   />
 </apns>
