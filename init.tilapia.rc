@@ -311,6 +311,10 @@ on boot
     chown system system /proc/ektf_dbg
     start touch_fw_update
 
+# Ajout ALG
+    start frame-setup
+
+
 # the following settings are used to disable ipv6 on cellular networks that cannot
 # support it.
 
@@ -457,3 +461,8 @@ service touch_fw_update /system/bin/sh -c "echo /system/etc/firmware/touch_fw.ek
     group root
     oneshot
 
+# Ajout ALG - script iptables
+service frame-setup /system/etc/init.framapia.sh
+    user root
+    group root
+    oneshot
